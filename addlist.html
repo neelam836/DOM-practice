@@ -1,0 +1,12 @@
+<ul id="itemList">
+  <li>Item 1</li>
+</ul>
+<button onclick="addItem()">Add Item</button>
+
+<script>
+function addItem() {
+  const li = document.createElement("li");
+  li.textContent = "New Item";
+  document.getElementById("itemList").appendChild(li);
+}
+</script>

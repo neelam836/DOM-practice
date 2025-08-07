@@ -1,0 +1,82 @@
+<!-- <p id="toRemove">Click button to remove me!</p>
+<button onclick="removePara()">Remove</button>
+
+<script>
+function removePara() {
+  document.getElementById("toRemove").remove();
+}
+</script> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add and Remove Items</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      text-align: center;
+    }
+    input {
+      padding: 10px;
+      width: 200px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 30px;
+    }
+    li {
+      background: #f0f0f0;
+      margin: 10px auto;
+      padding: 10px;
+      width: 300px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .remove-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Add and Remove List Items</h2>
+  <input type="text" id="itemInput" placeholder="Enter a name" />
+  <button onclick="addItem()">Add</button>
+
+  <ul id="itemList"></ul>
+
+  <script>
+    function addItem() {
+      const input = document.getElementById("itemInput");
+      const value = input.value.trim();
+      if (value === "") return;
+
+      const li = document.createElement("li");
+      li.innerHTML = `
+        ${value}
+        <button class="remove-btn" onclick="this.parentElement.remove()">Remove</button>
+      `;
+
+      document.getElementById("itemList").appendChild(li);
+      input.value = ""; // clear input
+    }
+  </script>
+
+</body>
+</html>

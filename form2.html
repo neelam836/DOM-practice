@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Portfolio with Interactive Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hero {
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+    }
+    .project-card {
+      transition: 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    .color-preview {
+      width: 25px;
+      height: 25px;
+      border: 1px solid #333;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="container">
+    <h1 class="display-4">Neelam Joshi</h1>
+    <p class="lead">Frontend Developer | JavaScript Enthusiast</p>
+    <p>Crafting interactive UIs & beautiful experiences</p>
+  </div>
+</section>
+
+<!-- PROJECTS SECTION -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">🚀 Projects</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card project-card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Dynamic Form Builder</h5>
+            <p class="card-text">React-based form builder with validation and dynamic fields.</p>
+            <a href="#" class="btn btn-primary btn-sm">View Project</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card project-card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Student Dashboard</h5>
+            <p class="card-text">Full CRUD system using React + Node.js + MongoDB.</p>
+            <a href="#" class="btn btn-primary btn-sm">View Project</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card project-card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Interactive To-Do List</h5>
+            <p class="card-text">Beautiful UI with task filtering, due dates, and localStorage.</p>
+            <a href="#" class="btn btn-primary btn-sm">View Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="mb-4 text-center">📬 Contact Me</h2>
+    <form id="contactForm" class="bg-white p-4 rounded shadow">
+      <div class="row g-3">
+
+        <div class="col-md-6">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" name="name" maxlength="30" id="nameInput">
+          <small id="nameCount" class="text-muted">0 / 30</small>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" name="email" required>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Phone</label>
+          <input type="tel" class="form-control" name="phone" pattern="[0-9]{10}">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Date</label>
+          <input type="date" class="form-control" name="date">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Preferred Time</label>
+          <input type="time" class="form-control" name="time">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Favorite Color</label><br>
+          <input type="color" name="color" id="colorInput">
+          <span class="color-preview" id="colorPreview"></span>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Resume Upload</label>
+          <input type="file" class="form-control" name="resume" id="fileInput">
+          <div class="text-muted" id="fileName"></div>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Rating (0–10)</label>
+          <input type="range" class="form-range" name="rating" min="0" max="10" id="rangeInput">
+          <span id="rangeValue">5</span>
+        </div>
+
+        <div class="col-12">
+          <label class="form-label">Message</label>
+          <textarea class="form-control" name="message" rows="3"></textarea>
+        </div>
+
+        <div class="col-12 form-check">
+          <input type="checkbox" class="form-check-input" id="agreeCheck">
+          <label class="form-check-label">I agree to terms & privacy</label>
+        </div>
+
+        <div class="col-12 d-grid">
+          <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Send Message</button>
+        </div>
+
+      </div>
+    </form>
+
+    <div id="formOutput" class="mt-4 p-3 bg-white rounded shadow-sm"></div>
+  </div>
+</section>
+
+<script>
+  const nameInput = document.getElementById("nameInput");
+  const nameCount = document.getElementById("nameCount");
+  const colorInput = document.getElementById("colorInput");
+  const colorPreview = document.getElementById("colorPreview");
+  const fileInput = document.getElementById("fileInput");
+  const fileName = document.getElementById("fileName");
+  const rangeInput = document.getElementById("rangeInput");
+  const rangeValue = document.getElementById("rangeValue");
+  const agreeCheck = document.getElementById("agreeCheck");
+  const submitBtn = document.getElementById("submitBtn");
+  const form = document.getElementById("contactForm");
+  const output = document.getElementById("formOutput");
+
+  nameInput.addEventListener("input", () => {
+    nameCount.textContent = `${nameInput.value.length} / 30`;
+  });
+
+  colorInput.addEventListener("input", () => {
+    colorPreview.style.backgroundColor = colorInput.value;
+  });
+
+  fileInput.addEventListener("change", () => {
+    fileName.textContent = fileInput.files.length ? fileInput.files[0].name : '';
+  });
+
+  rangeInput.addEventListener("input", () => {
+    rangeValue.textContent = rangeInput.value;
+  });
+
+  agreeCheck.addEventListener("change", () => {
+    submitBtn.disabled = !agreeCheck.checked;
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    let html = "<h5>✅ Message Sent Successfully:</h5><ul>";
+    for (let [key, val] of data.entries()) {
+      html += `<li><strong>${key}</strong>: ${val}</li>`;
+    }
+    html += "</ul>";
+    output.innerHTML = html;
+    form.reset();
+    nameCount.textContent = "0 / 30";
+    fileName.textContent = "";
+    rangeValue.textContent = "5";
+    colorPreview.style.backgroundColor = "#ffffff";
+    submitBtn.disabled = true;
+  });
+</script>
+
+</body>
+</html>

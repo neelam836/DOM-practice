@@ -1,0 +1,110 @@
+<!-- <p id="text">
+Change Me
+</p>
+<button onclick="changeColor()">Change Color</button>
+
+<script>
+    function changeColor(){
+        document.getElementById("text").style.color="pink";
+    }
+</script> -->
+<!-- 
+<p id="text">Color Me Randomly!</p>
+<button onclick="changeColor()">Change Color</button>
+
+<script>
+function changeColor() {
+  const colors = ["red", "blue", "green", "orange", "purple", "pink"];
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  document.getElementById("text").style.color = randomColor;
+}
+</script> -->
+
+<!-- <p id="text">Color Me by Choice!</p>
+
+<label><input type="radio" name="color" value="red"> Red</label>
+<label><input type="radio" name="color" value="green"> Green</label>
+<label><input type="radio" name="color" value="blue"> Blue</label>
+
+<script>
+const radios = document.querySelectorAll('input[name="color"]');
+radios.forEach(radio => {
+  radio.addEventListener('change', function () {
+    document.getElementById("text").style.color = this.value;
+  });
+});
+</script> -->
+<!-- 
+<p id="text">Pick a Color!</p>
+<input type="color" id="colorPicker">
+
+<script>
+document.getElementById("colorPicker").addEventListener("input", function() {
+  document.getElementById("text").style.color = this.value;
+});
+</script> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Super Color Changer</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #text {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .color-options {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <p id="text">Color Me!</p>
+
+  <!-- Random Button -->
+  <button onclick="changeRandomColor()">🎲 Random Color</button>
+
+  <!-- Radio Buttons -->
+  <div class="color-options">
+    <label><input type="radio" name="color" value="red"> Red</label>
+    <label><input type="radio" name="color" value="green"> Green</label>
+    <label><input type="radio" name="color" value="blue"> Blue</label>
+    <label><input type="radio" name="color" value="purple"> Purple</label>
+  </div>
+
+  <!-- Color Picker -->
+  <input type="color" id="colorPicker" />
+
+  <script>
+    const text = document.getElementById("text");
+
+    // Random color change
+    function changeRandomColor() {
+      const colors = ["red", "green", "blue", "orange", "purple", "pink", "teal"];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      text.style.color = randomColor;
+    }
+
+    // Radio buttons
+    document.querySelectorAll('input[name="color"]').forEach((radio) => {
+      radio.addEventListener('change', function () {
+        text.style.color = this.value;
+      });
+    });
+
+    // Color picker
+    document.getElementById("colorPicker").addEventListener("input", function () {
+      text.style.color = this.value;
+    });
+  </script>
+
+</body>
+</html>
